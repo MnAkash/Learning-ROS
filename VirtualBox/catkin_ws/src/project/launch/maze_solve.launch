@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="project" type="maze_solve.py" name="robot_control_node" output="screen"/>
+</launch>
