@@ -1,4 +1,9 @@
 #! /usr/bin/env python
+'''
+By Moniruzzaman Akash
+April,2020
+Contact: akashmoniruzzaman@gmail.com
+'''
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -114,7 +119,7 @@ class RobotControl():
         return s
 
 
-    def turn(self, clockwise, speed, time):
+    def turn(self, direction, speed, time):
 
         # Initilize velocities
         self.cmd.linear.x = 0
@@ -123,7 +128,7 @@ class RobotControl():
         self.cmd.angular.x = 0
         self.cmd.angular.y = 0
 
-        if clockwise == "clockwise":
+        if direction == "clockwise":
             self.cmd.angular.z = -speed
         else:
             self.cmd.angular.z = speed
@@ -140,11 +145,15 @@ class RobotControl():
         # set velocity to zero to stop the robot
         self.stop_robot()
 
-        s = "Turned robot " + clockwise + " for " + str(time) + " seconds"
+        s = "Turned robot " + direction + " for " + str(time) + " seconds"
         return s
 
 
 robot = RobotControl()
+
+
+
+
 
 #robot.move_straight_time('forward', 0.5, 5)
 print(robot.turn("clockwise", 1, 3.5))
